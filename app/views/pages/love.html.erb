@@ -1,0 +1,21 @@
+<%=form_tag feeling_search_url do |feeling_str| %>
+ <%=text_field_tag :feeling_str %> | <%=submit_tag "Feel It!"%>
+<% end %>
+
+<div id="love">
+<% if @love_data.present? %>
+<h2><%=@love_data["query"]%></h2>
+  <% @love_data["results"].each  do |tweet| %>
+    <li><%= tweet["from_user"] %> tweeted "<%= tweet["text"]%>"</li>
+  <% end %>
+<% end %>
+</div>
+
+<div id="hate">
+<% if @hate_data.present? %>
+<h2><%=@hate_data["query"]%></h2>
+  <% @hate_data["results"].each  do |tweet| %>
+    <li><%= tweet["from_user"] %> tweeted "<%= tweet["text"]%>"</li>
+  <% end %>
+<% end %>
+</div>

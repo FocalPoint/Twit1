@@ -1,0 +1,12 @@
+<h1>Twitter Search</h1>
+
+<%= form_tag(search_url) do %>
+  <%=text_field_tag :search_str%> | <%=submit_tag "Find Tweets!"%>
+<% end %>
+<p></p>
+<% if @data.present? %>
+<h2><%=@data["query"]%></h2>
+  <% @data["results"].each  do |tweet| %>
+    <li><%= tweet["from_user"] %> tweeted "<%= tweet["text"]%>"</li>
+  <% end %>
+<% end %>
